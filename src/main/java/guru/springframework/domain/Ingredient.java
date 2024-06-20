@@ -3,10 +3,12 @@ package guru.springframework.domain;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Ingredient
@@ -17,7 +19,8 @@ public class Ingredient
     private String description;
     private BigDecimal amount;
     
-    //private UnitOfMeasure uom;
+    @OneToOne(fetch = FetchType.EAGER)
+    private UnitOfMeasure uom;
     
     @ManyToOne
     private Recipe recipe;
