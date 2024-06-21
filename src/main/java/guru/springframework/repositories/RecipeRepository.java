@@ -6,5 +6,5 @@ import guru.springframework.domain.Recipe;
 
 public interface RecipeRepository extends CrudRepository<Recipe,Long>
 {
-
+    
 }
