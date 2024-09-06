@@ -18,7 +18,9 @@ import guru.springframework.spring5_recipe_app.domain.UnitOfMeasure;
 import guru.springframework.spring5_recipe_app.repositories.CategoryRepository;
 import guru.springframework.spring5_recipe_app.repositories.RecipeRepository;
 import guru.springframework.spring5_recipe_app.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
@@ -35,6 +37,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes() {
